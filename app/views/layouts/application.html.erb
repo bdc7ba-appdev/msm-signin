@@ -16,6 +16,9 @@
 
   <body>
 
+
+
+<% if session.fetch(:user_id) == nil %>
   <nav>
       <ul>
           <li>
@@ -34,9 +37,33 @@
           </a>
         </li>
       </ul>
+        <% else %>
+      <ul>
+        <li>
+          <a href="/user_sign_out">
+            Sign out
+          </a>
+        </li>
+
+        <li>
+          <a href="/bookmarks">
+            My bookmarks
+          </a>
+        </li>
+
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+
+        </ul>
+        <%end%>
+      
     </nav>
 
-
+<p style="color: green"> <%=notice%> </p>
+<p style="color: red"> <%=alert%> </p>
 
     <%= yield %>
   </body>
